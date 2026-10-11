@@ -1,4 +1,4 @@
-# Environment variables and secrets
+# Secret environment variables
 .env
 .env.*
 !.env.example
@@ -6,13 +6,17 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Production builds
 dist/
 build/
 
 # Logs
 *.log
+npm-debug.log*
 
-# Editor and operating system files
-.vscode/
+# Operating system files
 .DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
