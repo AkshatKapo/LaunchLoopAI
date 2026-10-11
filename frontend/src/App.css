@@ -1,0 +1,1830 @@
+/* LaunchLoop AI — complete corrected dashboard stylesheet */
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, textarea { font-family: inherit; }
+
+/* =========================================
+
+   LAUNCHLOOP AI — DASHBOARD STYLING
+
+   ========================================= */
+
+
+
+/* Main layout: sidebar on the left, content on the right */
+
+.app-shell {
+
+  display: flex;
+
+  min-height: 100vh;
+
+  background: #f8fafc;
+
+  color: #172033;
+
+}
+
+
+
+/* =========================================
+
+   SIDEBAR
+
+   ========================================= */
+
+
+
+.sidebar {
+
+  width: 250px;
+
+  flex-shrink: 0;
+
+  background: #101827;
+
+  color: #e2e8f0;
+
+  padding: 28px 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+/* LaunchLoop logo and name */
+
+.brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 20px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.7px;
+
+  margin-bottom: 48px;
+
+}
+
+
+
+.brand-icon {
+
+  background: #6d5dfc;
+
+  padding: 9px;
+
+  border-radius: 11px;
+
+  display: flex;
+
+}
+
+
+
+.brand-ai {
+
+  color: #a5a0ff;
+
+}
+
+
+
+/* Small WORKSPACE heading */
+
+.sidebar-label {
+
+  font-size: 11px;
+
+  letter-spacing: 1.5px;
+
+  color: #74839b;
+
+  padding: 0 12px;
+
+  margin-bottom: 14px;
+
+}
+
+
+
+/* Navigation items */
+
+.navigation {
+
+  display: grid;
+
+  gap: 7px;
+
+}
+
+
+
+.nav-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  color: #94a3b8;
+
+}
+
+
+
+/* Highlight the current page */
+
+.nav-item.active {
+
+  background: #27314c;
+
+  color: #ffffff;
+
+  font-weight: 600;
+
+}
+
+
+
+/* Small service status at the bottom */
+
+.sidebar-footer {
+
+  margin-top: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 11px;
+
+  color: #94a3b8;
+
+}
+
+
+
+.status-dot {
+
+  width: 8px;
+
+  height: 8px;
+
+  background: #22c55e;
+
+  border-radius: 50%;
+
+}
+
+
+
+/* =========================================
+
+   MAIN DASHBOARD
+
+   ========================================= */
+
+
+
+.main-content {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+/* Top navigation bar */
+
+.topbar {
+
+  height: 70px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e7ebf1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 40px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+}
+
+
+
+.topbar-badge {
+
+  background: #eef2ff;
+
+  color: #5b50c7;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-weight: 600;
+
+}
+
+
+
+/* Main page spacing */
+
+.page-content {
+
+  max-width: 1450px;
+
+  margin: auto;
+
+  padding: 40px;
+
+}
+
+
+
+/* Small purple heading */
+
+.eyebrow {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #6d5dfc;
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  letter-spacing: 1.4px;
+
+}
+
+
+
+/* Page title */
+
+.page-heading h1 {
+
+  margin: 13px 0 7px;
+
+  font-size: 30px;
+
+  letter-spacing: -1px;
+
+}
+
+
+
+.page-heading p,
+
+.panel-heading p {
+
+  color: #718096;
+
+  font-size: 13px;
+
+  margin: 0;
+
+}
+
+
+
+/* Two-column layout:
+
+   left = campaign form
+
+   right = AI-generated results */
+
+.workspace-grid {
+
+  display: grid;
+
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+
+  gap: 24px;
+
+  margin-top: 32px;
+
+  align-items: start;
+
+}
+
+
+
+/* =========================================
+
+   CARDS / PANELS
+
+   ========================================= */
+
+
+
+.panel {
+
+  background: #ffffff;
+
+  border: 1px solid #e6eaf0;
+
+  border-radius: 15px;
+
+  padding: 26px;
+
+  box-shadow: 0 4px 20px rgba(20, 30, 50, 0.025);
+
+}
+
+
+
+.panel-heading {
+
+  margin-bottom: 26px;
+
+}
+
+
+
+.panel-heading h2 {
+
+  margin: 0 0 7px;
+
+  font-size: 17px;
+
+  letter-spacing: -0.3px;
+
+}
+
+
+
+/* =========================================
+
+   CAMPAIGN FORM
+
+   ========================================= */
+
+
+
+form {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+/* Labels above inputs */
+
+form label {
+
+  font-size: 12px;
+
+  font-weight: 650;
+
+  margin: 0 0 9px;
+
+}
+
+
+
+/* Text fields and textarea */
+
+form input,
+
+form textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px 13px;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font: inherit;
+
+  font-size: 13px;
+
+  margin-bottom: 22px;
+
+  outline: none;
+
+}
+
+
+
+/* Purple outline when the user selects an input */
+
+form input:focus,
+
+form textarea:focus {
+
+  border-color: #8277ff;
+
+  box-shadow: 0 0 0 3px #8277ff1a;
+
+}
+
+
+
+form textarea {
+
+  resize: vertical;
+
+}
+
+
+
+/* Generate Campaign button */
+
+.generate-button {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  border: none;
+
+  background: #6759ed;
+
+  color: #ffffff;
+
+  border-radius: 9px;
+
+  padding: 15px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+
+}
+
+
+
+/* Darken the button on hover */
+
+.generate-button:hover {
+
+  background: #5648d6;
+
+}
+
+
+
+/* Disable button while AI is processing */
+
+.generate-button:disabled {
+
+  opacity: 0.7;
+
+  cursor: wait;
+
+}
+
+
+
+/* =========================================
+
+   CAMPAIGN RESULTS
+
+   ========================================= */
+
+
+
+.result-title-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+
+/* Yellow Draft label */
+
+.draft-badge {
+
+  background: #fff4dd;
+
+  color: #956000;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+}
+
+
+
+/* Empty state before generating a campaign */
+
+.empty-state {
+
+  min-height: 350px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  color: #758197;
+
+}
+
+
+
+.empty-icon {
+
+  background: #f1efff;
+
+  color: #6d5dfc;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  margin-bottom: 15px;
+
+}
+
+
+
+.empty-state h3 {
+
+  font-size: 16px;
+
+  color: #263248;
+
+  margin: 12px 0 7px;
+
+}
+
+
+
+.empty-state p {
+
+  max-width: 290px;
+
+  line-height: 1.7;
+
+  font-size: 12px;
+
+}
+
+
+
+/* Section headings inside generated results */
+
+.campaign-results h3 {
+
+  font-size: 14px;
+
+  margin-top: 28px;
+
+}
+
+
+
+/* Warning about unverified AI-generated information */
+
+.notice {
+
+  background: #fffbeb;
+
+  color: #92400e;
+
+  border: 1px solid #fde68a;
+
+  padding: 12px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+}
+
+
+
+/* Display the AI's strategy with original line breaks */
+
+.strategy-content {
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+
+  line-height: 1.8;
+
+  font-size: 13px;
+
+  color: #334155;
+
+  max-height: 600px;
+
+  overflow-y: auto;
+
+}
+
+
+
+/* =========================================
+
+   COMPETITOR RESEARCH LINKS
+
+   ========================================= */
+
+
+
+.research-list {
+
+  display: grid;
+
+  gap: 8px;
+
+}
+
+
+
+.research-source {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #5147c5;
+
+  background: #f8f9fc;
+
+  border: 1px solid #edf0f5;
+
+  border-radius: 8px;
+
+  padding: 12px;
+
+  font-size: 12px;
+
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+
+}
+
+
+
+.research-source:hover {
+
+  background: #f0efff;
+
+}
+
+
+
+.research-source span {
+
+  flex: 1;
+
+}
+
+
+
+/* Footer explaining that nothing has been sent */
+
+.draft-footer {
+
+  margin-top: 24px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #e8edf4;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+}
+
+
+
+/* Error message if the API request fails */
+
+.error-box {
+
+  background: #fef2f2;
+
+  color: #b91c1c;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+}
+
+
+
+/* =========================================
+
+   LOADING ANIMATION
+
+   ========================================= */
+
+
+
+/* Rotates the loading icon continuously */
+
+.spinner {
+
+  animation: spin 1s linear infinite;
+
+}
+
+
+
+@keyframes spin {
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* =========================================
+
+   RESPONSIVE DESIGN
+
+   ========================================= */
+
+
+
+/* On tablets, stack the form and results vertically */
+
+@media (max-width: 1000px) {
+
+  .workspace-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+
+
+/* On mobile, move sidebar above the main content */
+
+@media (max-width: 650px) {
+
+  .app-shell {
+
+    flex-direction: column;
+
+  }
+
+
+
+  .sidebar {
+
+    width: auto;
+
+    padding: 18px;
+
+  }
+
+
+
+  .sidebar-footer,
+
+  .sidebar-label {
+
+    display: none;
+
+  }
+
+
+
+  .brand {
+
+    margin-bottom: 15px;
+
+  }
+
+
+
+  .navigation {
+
+    display: flex;
+
+    overflow-x: auto;
+
+  }
+
+
+
+  .nav-item {
+
+    white-space: nowrap;
+
+  }
+
+
+
+  .topbar {
+
+    padding: 0 20px;
+
+  }
+
+
+
+  .page-content {
+
+    padding: 24px 18px;
+
+  }
+
+
+
+  .panel {
+
+    padding: 20px;
+
+  }
+
+
+
+}
+
+/* =========================================
+
+   AI MARKETING REPORT FORMATTING
+
+   ========================================= */
+
+
+
+/* Main report container */
+
+.strategy-content {
+
+  font-size: 13px;
+
+  line-height: 1.75;
+
+  color: #334155;
+
+  white-space: normal;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+
+/* Section headings generated by Nemotron */
+
+.strategy-content h1,
+
+.strategy-content h2,
+
+.strategy-content h3 {
+
+  color: #172033;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+}
+
+
+
+.strategy-content h1 {
+
+  font-size: 21px;
+
+  margin: 25px 0 14px;
+
+}
+
+
+
+.strategy-content h2 {
+
+  font-size: 17px;
+
+  margin: 24px 0 12px;
+
+}
+
+
+
+.strategy-content h3 {
+
+  font-size: 14px;
+
+  margin: 20px 0 10px;
+
+}
+
+
+
+/* Paragraph spacing */
+
+.strategy-content p {
+
+  margin: 10px 0;
+
+}
+
+
+
+/* Lists */
+
+.strategy-content ul,
+
+.strategy-content ol {
+
+  padding-left: 23px;
+
+  margin: 12px 0;
+
+}
+
+
+
+.strategy-content li {
+
+  margin-bottom: 8px;
+
+}
+
+
+
+/* Highlight important information */
+
+.strategy-content strong {
+
+  color: #1e293b;
+
+  font-weight: 700;
+
+}
+
+
+
+/* Research citations */
+
+.strategy-content a {
+
+  color: #6254e8;
+
+  text-decoration: underline;
+
+  text-underline-offset: 3px;
+
+}
+
+
+
+/* Tables from Nemotron */
+
+.strategy-content table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin: 18px 0;
+
+  font-size: 12px;
+
+}
+
+
+
+/* Allow tables to scroll on narrow screens */
+
+.strategy-content {
+
+  overflow-x: auto;
+
+}
+
+
+
+.strategy-content th,
+
+.strategy-content td {
+
+  border: 1px solid #e2e8f0;
+
+  padding: 11px;
+
+  text-align: left;
+
+  vertical-align: top;
+
+}
+
+
+
+.strategy-content th {
+
+  background: #f1f3ff;
+
+  color: #334155;
+
+  font-weight: 700;
+
+}
+
+
+
+.strategy-content tr:nth-child(even) {
+
+  background: #f8fafc;
+
+}
+
+
+
+/* Horizontal dividers */
+
+.strategy-content hr {
+
+  border: none;
+
+  border-top: 1px solid #e2e8f0;
+
+  margin: 25px 0;
+
+}
+
+
+
+/* Long links or technical text */
+
+.strategy-content code {
+
+  overflow-wrap: anywhere;
+
+  background: #f1f5f9;
+
+  padding: 2px 5px;
+
+  border-radius: 4px;
+
+}
+
+
+
+/* =========================================
+
+   STRUCTURED CAMPAIGN RESULTS
+
+   ========================================= */
+
+
+
+/* Make sure long AI responses cannot stretch the layout */
+
+.results-panel,
+
+.structured-results {
+
+  min-width: 0;
+
+}
+
+
+
+/* Separate each section with a subtle divider */
+
+.result-section {
+
+  padding: 24px 0;
+
+  border-bottom: 1px solid #e9edf4;
+
+}
+
+
+
+/* Section heading with an icon */
+
+.result-section h3 {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: #1e293b;
+
+  font-size: 15px;
+
+  margin: 0 0 15px;
+
+}
+
+
+
+/* Text generated by Nemotron */
+
+.result-section p {
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  color: #475569;
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+
+/* Put the warning icon beside its text */
+
+.notice {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+}
+
+
+
+/* Highlight the proposed promotion */
+
+.offer-box {
+
+  padding: 16px;
+
+  background: #f5f3ff;
+
+  border: 1px solid #e6e0ff;
+
+  border-radius: 10px;
+
+  color: #5145a8;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+
+}
+
+
+
+/* =========================================
+
+   BUDGET TABLE
+
+   ========================================= */
+
+
+
+/* Allow only the table to scroll horizontally if necessary */
+
+.budget-table-wrapper {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+}
+
+
+
+.budget-table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 12px;
+
+}
+
+
+
+.budget-table th {
+
+  text-align: left;
+
+  background: #f5f6fb;
+
+  color: #475569;
+
+  padding: 13px;
+
+}
+
+
+
+.budget-table td {
+
+  padding: 13px;
+
+  border-bottom: 1px solid #e9edf4;
+
+  color: #475569;
+
+  vertical-align: top;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+
+/* Keep dollar amounts on one line */
+
+.budget-table td:nth-child(2) {
+
+  white-space: nowrap;
+
+  font-weight: 700;
+
+  color: #1e293b;
+
+}
+
+
+
+/* Display allocated and remaining budget */
+
+.budget-summary {
+
+  display: flex;
+
+  gap: 24px;
+
+  margin-top: 18px;
+
+  padding: 16px;
+
+  background: #f8fafc;
+
+  border-radius: 10px;
+
+}
+
+
+
+.budget-summary div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+}
+
+
+
+.budget-summary span {
+
+  font-size: 11px;
+
+  color: #64748b;
+
+}
+
+
+
+.budget-summary strong {
+
+  font-size: 17px;
+
+  color: #1e293b;
+
+}
+
+
+
+/* =========================================
+
+   EMAIL EDITOR
+
+   ========================================= */
+
+
+
+.email-editor {
+
+  border: 1px solid #e4e9f2;
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  background: #fbfcff;
+
+}
+
+
+
+.email-editor-heading {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #5145a8;
+
+}
+
+
+
+.email-editor label {
+
+  display: block;
+
+  margin: 15px 0 8px;
+
+  font-size: 12px;
+
+  font-weight: 650;
+
+  color: #334155;
+
+}
+
+
+
+.email-editor input,
+
+.email-editor textarea {
+
+  display: block;
+
+  width: 100%;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  padding: 12px;
+
+  color: #334155;
+
+  font: inherit;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  outline: none;
+
+}
+
+
+
+.email-editor textarea {
+
+  resize: vertical;
+
+}
+
+
+
+.email-editor input:focus,
+
+.email-editor textarea:focus {
+
+  border-color: #8277ff;
+
+  box-shadow: 0 0 0 3px #8277ff1a;
+
+}
+
+
+
+/* =========================================
+
+   WARNINGS
+
+   ========================================= */
+
+
+
+.warning-list {
+
+  margin: 0;
+
+  padding-left: 22px;
+
+  color: #92400e;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+
+}
+
+
+
+.warning-list li {
+
+  margin-bottom: 10px;
+
+}
+
+
+
+/* =========================================
+
+   DRAFT REVIEW
+
+   ========================================= */
+
+
+
+.approval-section {
+
+  margin-top: 26px;
+
+  padding: 20px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 12px;
+
+}
+
+
+
+/* Checkbox and confirmation message */
+
+.confirmation-row {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: #334155;
+
+  cursor: pointer;
+
+}
+
+
+
+.confirmation-row input {
+
+  margin-top: 4px;
+
+  accent-color: #6759ed;
+
+}
+
+
+
+/* Review button */
+
+.review-button {
+
+  width: 100%;
+
+  margin-top: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #6759ed;
+
+  color: white;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+}
+
+
+
+.review-button:hover:not(:disabled) {
+
+  background: #5648d6;
+
+}
+
+
+
+.review-button:disabled {
+
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+}
+/* Make sidebar buttons look like navigation links */
+.navigation .nav-item {
+  width: 100%;
+  border: none;
+  text-align: left;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Highlight the currently selected page */
+.navigation .nav-item.active {
+  background: #27314c;
+  color: #ffffff;
+}
+
+/* Make unavailable pages visually distinct */
+.navigation .nav-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+.approval-note {
+
+  margin: 12px 0 0;
+
+  font-size: 11px;
+
+  color: #64748b;
+
+  text-align: center;
+
+}
+
+/* =========================================
+   FINAL DESKTOP AND EDITOR POLISH
+   ========================================= */
+.results-panel { min-width: 0; overflow: hidden; }
+.structured-results .result-section { display: block; padding: 26px 0; }
+.structured-results .budget-table-wrapper { width: 100%; overflow-x: auto; }
+.structured-results .budget-table { width: 100%; border-collapse: collapse; }
+.structured-results .budget-table th,
+.structured-results .budget-table td { padding: 13px; text-align: left; vertical-align: top; }
+.structured-results .email-editor { display: flex; flex-direction: column; width: 100%; }
+.structured-results .email-editor label { display: block; }
+.structured-results .email-editor input,
+.structured-results .email-editor textarea { display: block; width: 100%; min-width: 0; box-sizing: border-box; }
+.structured-results .email-editor textarea { min-height: 260px; resize: vertical; }
+.structured-results .budget-summary { display: flex; flex-wrap: wrap; }
+.structured-results .research-source span { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 1000px) {
+  .workspace-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* =========================================
+   COMPETITOR RESEARCH — RESULT CARDS
+   ========================================= */
+
+/* Keep research content within the page width */
+.research-page {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Limit the width of the research form */
+.research-form-panel {
+  max-width: 650px;
+  margin-top: 28px;
+}
+
+/* Add spacing above the results */
+.research-results {
+  margin-top: 36px;
+}
+
+/* Put the results heading and source count on one row */
+.research-results-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.research-results-heading h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Style the warning about unverified research */
+.research-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 15px;
+  margin-bottom: 24px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  color: #92400e;
+  font-size: 13px;
+}
+
+/* Display source cards in two columns */
+.research-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Give each source its own card */
+.research-card {
+  min-width: 0;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+}
+
+/* Source number and icon */
+.research-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  color: #6557e8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Source title */
+.research-card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #17233b;
+}
+
+/* Limit very long Tavily descriptions */
+.research-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  margin: 0 0 18px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Link to the original source */
+.research-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6557e8;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.research-card a:hover {
+  text-decoration: underline;
+}
+
+/* Center the empty state before searching */
+.research-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 20px;
+  color: #64748b;
+}
+
+.research-empty-state h3 {
+  margin: 16px 0 6px;
+  color: #17233b;
+}
+
+/* Stack the cards on smaller screens */
+@media (max-width: 800px) {
+  .research-cards {
+    grid-template-columns: 1fr;
+  }
+}
+/* Email Campaigns page: appended to the existing App.css */
+.email-campaigns-page { width: 100%; max-width: 1100px; margin: 0 auto; }
+.email-campaigns-page .panel { margin-top: 28px; }
+.email-campaigns-page .panel-heading h2 { display: flex; align-items: center; gap: 10px; }
+.email-campaigns-page .email-editor { display: flex; flex-direction: column; gap: 8px; }
+.email-campaigns-page .email-editor input,
+.email-campaigns-page .email-editor textarea { width: 100%; box-sizing: border-box; }
+.email-review-notice { display: flex; align-items: flex-start; gap: 12px; margin-top: 22px;
+  padding: 16px; background: #f5f3ff; border: 1px solid #ddd6fe;
+  border-radius: 10px; color: #5145a8; font-size: 13px; line-height: 1.7; }
+
+
