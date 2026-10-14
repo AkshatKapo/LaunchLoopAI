@@ -25,7 +25,7 @@ The project lets an owner enter their restaurant name, location, marketing goal,
 
 ### Requirements
 
-- Node.js and npm installed
+- Node.js 20.19+ or 22.12+ and npm installed
 - A Nebius Token Factory API key with access to the configured NVIDIA model
 - A Tavily API key
 
@@ -56,7 +56,7 @@ PORT=5000
 Start the backend:
 
 ```bash
-node server.js
+npm start
 ```
 
 Keep this terminal running. Never commit your real `.env` file or API keys to GitHub.

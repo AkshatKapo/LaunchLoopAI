@@ -1,4 +1,21 @@
 
+/**
+ * LaunchLoop AI - Competitor Research
+ *
+ * Allows restaurant owners to research nearby competitors
+ * using publicly available information from Tavily.
+ *
+ * Features:
+ * - Collect restaurant name and location
+ * - Request competitor research through the Express backend
+ * - Display search results with original source links
+ * - Handle API errors and loading states
+ * - Remind users to verify third-party information
+ *
+ * Tavily requests are handled by the backend so the
+ * Tavily API key is never exposed in the frontend.
+ */
+
 import { useState } from "react";
 import {
   Search,
@@ -7,36 +24,53 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
-// Our Express backend URL.
-// Tavily API keys remain safely on the backend.
+// Base URL of the LaunchLoop AI Express backend.
+// Uses the configured environment variable or localhost for development.
 const API_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+/**
+ * Competitor Research page.
+ *
+ * Manages restaurant search inputs, communicates with the backend,
+ * and displays competitor information returned by Tavily.
+ */
 function CompetitorResearch() {
-  // Restaurant details entered by the user.
+  // Store the restaurant name and location entered by the user.
   const [restaurantName, setRestaurantName] = useState("");
   const [location, setLocation] = useState("");
 
-  // Stores research results returned by Tavily.
+  // Store competitor research results returned by the backend.
   const [results, setResults] = useState([]);
 
-  // Tracks the API request and any errors.
+  // Track the current request's loading and error states.
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // True after a search has completed successfully.
+  // Track whether a research request has completed successfully.
   const [hasSearched, setHasSearched] = useState(false);
 
-  // Send the restaurant information to our backend.
+  /**
+   * Submit restaurant details to the competitor research API.
+   *
+   * The backend uses Tavily to retrieve public research sources.
+   * Results are stored in React state and displayed to the user.
+   *
+   * @param {Event} event - Research form submission event.
+   */
   async function handleResearch(event) {
+    // Prevent the browser from reloading the page on submission.
     event.preventDefault();
 
+    // Reset previous results and show the loading state.
     setLoading(true);
     setError("");
     setResults([]);
     setHasSearched(false);
 
     try {
+      // Send the restaurant details to the Express backend.
+      // The backend communicates with Tavily using its private API key.
       const response = await fetch(
         `${API_URL}/api/research/competitors`,
         {
@@ -51,28 +85,33 @@ function CompetitorResearch() {
         }
       );
 
+      // Parse the JSON response from the backend.
       const data = await response.json();
 
-      // Stop if the backend reports an error.
+      // Stop processing if the request was unsuccessful.
       if (!response.ok || !data.success) {
         throw new Error(
           data.error || "Competitor research failed."
         );
       }
 
-      // Store Tavily's source results in React state.
+      // Save the research results and mark the search as complete.
+      // Use an empty array if the response contains no valid result list.
       setResults(Array.isArray(data.results) ? data.results : []);
       setHasSearched(true);
     } catch (err) {
+      // Display a helpful message when the request fails.
       setError(err.message || "Something went wrong.");
     } finally {
+      // Hide the loading indicator after success or failure.
       setLoading(false);
     }
   }
 
   return (
     <div className="research-page">
-      {/* Page heading */}
+
+      {/* Page heading and feature description */}
       <div className="page-heading">
         <div className="eyebrow">
           <Search size={15} />
@@ -86,7 +125,7 @@ function CompetitorResearch() {
         </p>
       </div>
 
-      {/* Research form */}
+      {/* Restaurant information form */}
       <section className="panel research-form-panel">
         <div className="panel-heading">
           <h2>Research your market</h2>
@@ -94,6 +133,7 @@ function CompetitorResearch() {
         </div>
 
         <form onSubmit={handleResearch}>
+          {/* Restaurant name input */}
           <label htmlFor="researchRestaurant">
             Restaurant name
           </label>
@@ -107,6 +147,7 @@ function CompetitorResearch() {
             placeholder="e.g. Spice Garden"
           />
 
+          {/* Target location input */}
           <label htmlFor="researchLocation">
             Location
           </label>
@@ -120,6 +161,7 @@ function CompetitorResearch() {
             placeholder="e.g. Toronto, Ontario"
           />
 
+          {/* Submit button with a loading indicator during research */}
           <button
             className="generate-button"
             type="submit"
@@ -143,10 +185,10 @@ function CompetitorResearch() {
         </form>
       </section>
 
-      {/* Display API errors */}
+      {/* Show any errors returned during the research request */}
       {error && <div className="error-box">{error}</div>}
 
-      {/* Initial state before searching */}
+      {/* Initial message displayed before the first search */}
       {!loading && !hasSearched && !error && (
         <div className="research-empty-state">
           <Search size={28} />
@@ -157,14 +199,17 @@ function CompetitorResearch() {
         </div>
       )}
 
-      {/* Results from Tavily */}
+      {/* Research results displayed after a successful API request */}
       {hasSearched && (
         <section className="research-results">
+
+          {/* Display the number of research sources found */}
           <div className="research-results-heading">
             <h2>Research Results</h2>
             <span>{results.length} sources found</span>
           </div>
 
+          {/* Remind users that third-party information is unverified */}
           <div className="research-warning">
             <AlertTriangle size={17} />
             <span>
@@ -173,9 +218,12 @@ function CompetitorResearch() {
             </span>
           </div>
 
+          {/* Handle searches with no available results */}
           {results.length === 0 ? (
             <p>No research sources were found.</p>
           ) : (
+
+            /* Render a card for each research source */
             <div className="research-cards">
               {results.map((result, index) => (
                 <article
@@ -187,14 +235,16 @@ function CompetitorResearch() {
                     <Search size={17} />
                   </div>
 
+                  {/* Research source title */}
                   <h3>{result.title || "Untitled source"}</h3>
 
+                  {/* Description returned by Tavily */}
                   <p>
                     {result.content ||
                       "No description available."}
                   </p>
 
-                  {/* Open the original research source */}
+                  {/* Link to the original source for verification */}
                   {result.url && (
                     <a
                       href={result.url}
